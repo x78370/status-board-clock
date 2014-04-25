@@ -3,16 +3,56 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Faculty Schedule Panel 1</title>
     <link href="favicon.ico" rel="icon" type="image/x-icon"/>
     <link rel="stylesheet" href="css/foundation.css" />
     <link rel="stylesheet" href="css/styles.css" />
     <link href='http://fonts.googleapis.com/css?family=Gafata' rel='stylesheet' type='text/css'>
     <script src="js/vendor/modernizr.js"></script>
+     <title>The Time</title>
+        <script type="text/javascript">
+            // This function gets the current time and injects it into the DOM
+            function updateClock() {
+                // Gets the current time
+                var now = new Date();
+ 
+                // Get the hours, minutes and seconds from the current time
+                var hours = now.getHours();
+                var minutes = now.getMinutes();
+                var seconds = now.getSeconds();
+ 
+                // Format hours, minutes and seconds
+                if (hours < 10) {
+                    hours = "0" + hours;
+                }
+                if (hour > 12) {
+                    hour = hour – 12;
+                }
+                if (minutes < 10) {
+                    minutes = "0" + minutes;
+                }
+                if (seconds < 10) {
+                    seconds = "0" + seconds;
+                }
+ 
+                // Gets the element we want to inject the clock into
+                var elem = document.getElementById('clock');
+ 
+                // Sets the elements inner HTML value to our clock data
+                elem.innerHTML = hours + ':' + minutes + ':' + seconds;
+            }
+        </script>
   </head>
-  <body>
-<iframe src="http://free.timeanddate.com/clock/i44h41f4/n392/fn17/fs30/fc9ff/tc424242/pct/ftb/pa8/tt0/tw1/tm2/th2/tb4" frameborder="0" width="322" height="88" allowTransparency="true"></iframe>
-
+<!-- <iframe src="http://free.timeanddate.com/clock/i44h41f4/n392/fn17/fs30/fc9ff/tc424242/pct/ftb/pa8/tt0/tw1/tm2/th2/tb4" frameborder="0" width="322" height="88" allowTransparency="true"></iframe>
+ -->
+    <!--
+        This is the key to making the clock function.
+        When the page loads, it calls the javascript function "setInterval()",
+        which will call our function "updateClock()" once every 200 milliseconds.
+    -->
+    <body onload="setInterval('updateClock()', 200);">
+        <!-- This is the container for our clock, it can be any HTML element. -->
+        <h1 id="clock"></h1>
+   
 
     <script src="js/vendor/jquery.js"></script>
     <script src="js/foundation.min.js"></script>
